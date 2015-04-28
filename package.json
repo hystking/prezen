@@ -1,11 +1,13 @@
 {
   "scripts": {
+    "start": "npm run watch",
     "watch": "npm run watch:coffee & npm run watch:stylus & npm run watch:jade",
     "watch:coffee": "watchify src/coffee/index.coffee -o dest/js/index.js --extension '.coffee' -v",
     "watch:stylus": "stylus -w src/stylus/index.styl -o dest/css/index.css",
     "watch:jade": "jade -w src/jade/index.jade -o dest -p src/jade/ --obj meta.json --pretty",
-    "minify:js": "uglifyjs dest/js/index.js > dest/js/index.min.js",
-    "minify:css": "uglifycss dest/css/index.css > dest/css/index.min.css"
+    "minify": "npm run minify:js & npm run minify:css",
+    "minify:js": "uglifyjs dest/js/index.js -o dest/js/index.js",
+    "minify:css": "uglifycss dest/css/index.css > dest/css/index.temp.css ; cp dest/css/index.temp.css dest/css/index.css ; rm dest/css/index.temp.css"
   },
   "devDependencies": {
     "browserify": "^9.0.8",
