@@ -1,0 +1,6 @@
+{
+  "name": "pera-npm",
+  "dependencies": {
+    "jquery": "~2.1.3"
+  }
+}

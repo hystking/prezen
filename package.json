@@ -1,0 +1,26 @@
+{
+  "scripts": {
+    "watch": "npm run watch:coffee & npm run watch:stylus & npm run watch:jade",
+    "watch:coffee": "watchify src/coffee/index.coffee -o dest/js/index.js --extension '.coffee' -v",
+    "watch:stylus": "stylus -w src/stylus/index.styl -o dest/css/index.css",
+    "watch:jade": "jade -w src/jade/index.jade -o dest -p src/jade/ --obj meta.json --pretty",
+    "minify:js": "uglifyjs dest/js/index.js > dest/js/index.min.js",
+    "minify:css": "uglifycss dest/css/index.css > dest/css/index.min.css"
+  },
+  "devDependencies": {
+    "browserify": "^9.0.8",
+    "coffeeify": "^1.1.0",
+    "debowerify": "^1.2.1",
+    "jade": "^1.9.2",
+    "stylus": "^0.51.1",
+    "uglify-js": "^2.4.20",
+    "uglifycss": "0.0.14",
+    "watchify": "^3.2.0"
+  },
+  "browserify": {
+    "transform": [
+      "coffeeify",
+      "debowerify"
+    ]
+  }
+}

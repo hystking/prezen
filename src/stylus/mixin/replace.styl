@@ -1,0 +1,14 @@
+@require "hide-text"
+
+_replace(path)
+  size = image-size(path)
+
+  background-repeat: no-repeat
+  width: size[0]
+  height: size[1]
+  
+  hide-text()
+  
+replace(path)
+  background-image: url(path)
+  _replace(path)

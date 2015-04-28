@@ -1,0 +1,31 @@
+extend base
+
+block append meta
+  // Meta Infomation
+  title= title
+  meta(name="description", content=description)
+  meta(name="keywords", content=keywords)
+
+  // Facebook OGP
+  meta(name="og:title", content=title)
+  meta(name="og:description", content=description)
+  meta(name="og:type", content="website")
+  meta(name="og:url", content=url)
+  meta(name="og:image", content=ogImage)
+  meta(name="og:site_name", content=title)
+
+  // Twitter Card
+  meta(name="twitter:card", content="summary_large_image")
+  meta(name="twitter:title", content=title)
+  meta(name="twitter:description", content=description)
+  meta(name="twitter:image:src", content=ogImage)
+
+block content
+  main(class=slug)
+    h1 Yo!
+
+block append stylesheet
+  link(href="css/index.css", rel="stylesheet")
+
+block append script-body
+  script(src="js/index.js")
