@@ -12,16 +12,16 @@
     "minify:css": "uglifycss dest/css/index.css > dest/css/index.temp.css ; cp dest/css/index.temp.css dest/css/index.css ; rm dest/css/index.temp.css"
   },
   "devDependencies": {
-    "bower": "^1.4.1",
-    "browserify": "^9.0.8",
-    "coffeeify": "^1.1.0",
-    "debowerify": "^1.2.1",
-    "http-server": "^0.8.0",
-    "jade": "^1.9.2",
-    "stylus": "^0.51.1",
-    "uglify-js": "^2.4.20",
-    "uglifycss": "0.0.14",
-    "watchify": "^3.2.0"
+    "bower": "latest",
+    "browserify": "latest",
+    "coffeeify": "latest",
+    "debowerify": "latest",
+    "http-server": "latest",
+    "jade": "latest",
+    "stylus": "latest",
+    "uglify-js": "latest",
+    "uglifycss": "latest",
+    "watchify": "latest"
   },
   "browserify": {
     "transform": [
