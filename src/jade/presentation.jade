@@ -1,0 +1,61 @@
+mixin page
+  section.page&attributes(attributes)
+    .inner
+      if block
+        block
++page
+  h1= title
+  h2 おなまえ
+
++page
+  h1 H1要素
+
++page
+  h2 H2要素
+
++page
+  h3 H3要素
+
++page
+  p P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素
+
++page
+  h1 H1要素
+  h2 H2要素
+  h3 H3要素
+  p P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素
+
++page
+  h1
+    strong H1要素
+  h2
+    strong H2要素
+  h3
+    strong H3要素
+  p
+    strong P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素P要素
+
++page.background-sample
+  h1 背景
+
++page.background-sample
+  h2 画像
+  img(src="http://placebear.com/640/480")
+
++page.background-sample
+  h2 リスト
+  ul
+    li いろは
+    li にほへと
+    li ちりぬるを
+    li わかよ
+    li たれそ
+    li つねならむ
+
++page.background-sample
+  h2 番号リスト
+  ol
+    li とりなくこえす
+    li ゆめさませ
+    li みよあけわたる
+    li ひんかしを

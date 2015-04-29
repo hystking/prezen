@@ -1,0 +1,25 @@
+bgImage(bgUrl)
+  background: "url(%s)" % bgUrl
+  background-position: center
+  &:before
+    content: ""
+    position: absolute
+    display: block
+    left: 0
+    right: 0
+    top: 0
+    bottom: 0
+    background: alpha(#fff, .75)
+    
+bgCover(bgUrl)
+  bgImage(bgUrl)
+  background-repeat: no-repeat
+  background-size: cover
+  
+bgContain(bgUrl)
+  bgImage(bgUrl)
+  background-repeat: no-repeat
+  background-size: contain
+
+&.background-sample
+  bgCover("http://placebear.com/640/480")
