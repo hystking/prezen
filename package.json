@@ -1,7 +1,8 @@
 {
   "scripts": {
     "postinstall": "bower install",
-    "start": "npm run watch",
+    "start": "npm run watch & npm run serve",
+    "serve": "http-server dest -p 9000 -s -o",
     "watch": "npm run watch:coffee & npm run watch:stylus & npm run watch:jade",
     "watch:coffee": "watchify src/coffee/index.coffee -o dest/js/index.js --extension '.coffee' -v",
     "watch:stylus": "stylus -w src/stylus/index.styl -o dest/css/index.css",
@@ -15,6 +16,7 @@
     "browserify": "^9.0.8",
     "coffeeify": "^1.1.0",
     "debowerify": "^1.2.1",
+    "http-server": "^0.8.0",
     "jade": "^1.9.2",
     "stylus": "^0.51.1",
     "uglify-js": "^2.4.20",
