@@ -20,9 +20,12 @@ next = ->
 prev = ->
   togglePage ($ ".page.show").prev()
 
-window.addEventListener "resize", ->
-  console.log "resize"
+onResize = ->
+  $ ".prezen"
+    .css fontSize: window.innerHeight
   openPage $ ".page.show"
+
+window.addEventListener "resize", onResize
 
 combokeys.bind "right", next
 combokeys.bind "left", prev
@@ -34,3 +37,4 @@ combokeys.bind "shift+down", -> togglePage $ ".page:last-child"
 combokeys.bind "shift+up", -> togglePage $ ".page:first-child"
 
 togglePage ($ ".page").first()
+onResize()
