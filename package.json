@@ -15,7 +15,7 @@
     "bower": "latest",
     "browserify": "latest",
     "coffeeify": "latest",
-    "combokeys": "^2.4.3",
+    "combokeys": "latest",
     "debowerify": "latest",
     "http-server": "latest",
     "jade": "latest",
