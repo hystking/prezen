@@ -1,12 +1,15 @@
 {
   "scripts": {
     "postinstall": "bower install",
-    "start": "npm run watch & npm run serve",
+    "start": "npm run watch & npm run serve & npm run livereload",
     "serve": "http-server dest -p 9000 -s -o",
-    "watch": "npm run watch:coffee & npm run watch:stylus & npm run watch:jade",
+    "livereload": "tiny-lr-fork",
+    "notify-reload": "curl http://localhost:35729/changed?files=dest/index.html -s > /dev/null",
+    "watch": "npm run watch:coffee & npm run watch:stylus & npm run watch:jade & npm run watch:reload",
     "watch:coffee": "watchify src/coffee/index.coffee -o dest/js/index.js --extension '.coffee' -v",
     "watch:stylus": "stylus -w src/stylus/index.styl -o dest/css/index.css",
     "watch:jade": "jade -w src/jade/index.jade -o dest -p src/jade/ --obj meta.json --pretty",
+    "watch:reload": "gaze 'npm run notify-reload' 'dest/**/*' --silent",
     "minify": "npm run minify:js & npm run minify:css",
     "minify:js": "uglifyjs dest/js/index.js -o dest/js/index.js",
     "minify:css": "uglifycss dest/css/index.css > dest/css/index.temp.css ; cp dest/css/index.temp.css dest/css/index.css ; rm dest/css/index.temp.css"
@@ -16,9 +19,11 @@
     "browserify": "latest",
     "coffeeify": "latest",
     "debowerify": "latest",
+    "gaze-cli": "latest",
     "http-server": "latest",
     "jade": "latest",
     "stylus": "latest",
+    "tiny-lr-fork": "latest",
     "uglify-js": "latest",
     "uglifycss": "latest",
     "watchify": "latest"
