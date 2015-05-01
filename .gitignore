@@ -97,5 +97,5 @@ bower_components
 .bower-registry
 .bower-tmp
 
-### dest
-dest
+### debug
+debug
