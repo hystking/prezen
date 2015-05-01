@@ -1,28 +1,42 @@
 {
   "scripts": {
     "postinstall": "bower install",
-    "start": "npm run watch & npm run serve",
+    "start": "npm run compile & npm run watch & npm run serve & npm run livereload",
+    
     "serve": "http-server dest -p 9000 -s -o",
+    "livereload": "tiny-lr-fork",
+    
+    "notify-reload": "curl http://localhost:35729/changed?files=dest/index.html -s > /dev/null",
+    "notify-reload:css": "curl http://localhost:35729/changed?files=dest/css/index.css -s > /dev/null",
+    
+    "compile": "npm run compile:coffee & npm run compile:stylus & npm run compile:jade",
+    "compile:coffee": "browserify src/coffee/index.coffee --extension '.coffee' -v > dest/js/index.js",
+    "compile:stylus": "stylus src/stylus/index.styl -p > dest/css/index.css; autoprefixer dest/css/index.css",
+    "compile:jade": "jade -p src/jade/. --obj meta.json --pretty < src/jade/index.jade > dest/index.html",
+
     "watch": "npm run watch:coffee & npm run watch:stylus & npm run watch:jade",
-    "watch:coffee": "watchify src/coffee/index.coffee -o dest/js/index.js --extension '.coffee' -v",
-    "watch:stylus": "stylus -w src/stylus/index.styl -o dest/css/index.css",
-    "watch:jade": "jade -w src/jade/index.jade -o dest -p src/jade/ --obj meta.json --pretty",
+    "watch:coffee": "gaze 'npm run compile:coffee; npm run notify-reload' 'src/coffee/**/*' --silent",
+    "watch:stylus": "gaze 'npm run compile:stylus; npm run notify-reload:css' 'src/stylus/**/*' --silent",
+    "watch:jade" : "gaze 'npm run compile:jade; npm run notify-reload' 'src/jade/**/*' --silent",
+    
     "minify": "npm run minify:js & npm run minify:css",
     "minify:js": "uglifyjs dest/js/index.js -o dest/js/index.js",
-    "minify:css": "uglifycss dest/css/index.css > dest/css/index.temp.css ; cp dest/css/index.temp.css dest/css/index.css ; rm dest/css/index.temp.css"
+    "minify:css": "uglifycss dest/css/index.css > dest/css/index.temp.css; cp dest/css/index.temp.css dest/css/index.css; rm dest/css/index.temp.css"
   },
   "devDependencies": {
+    "autoprefixer": "latest",
     "bower": "latest",
     "browserify": "latest",
     "coffeeify": "latest",
     "combokeys": "latest",
     "debowerify": "latest",
+    "gaze-cli": "latest",
     "http-server": "latest",
     "jade": "latest",
     "stylus": "latest",
+    "tiny-lr-fork": "latest",
     "uglify-js": "latest",
-    "uglifycss": "latest",
-    "watchify": "latest"
+    "uglifycss": "latest"
   },
   "browserify": {
     "transform": [
