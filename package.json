@@ -2,12 +2,15 @@
   "scripts": {
     "postinstall": "bower install",
     "start": "npm run build:debug; npm run watch & npm run serve & npm run livereload",
-    "build:debug": "npm run clean; npm run mkdir; npm run compile;",
-    "build:release": "npm run build:debug; sleep 1; npm run minify; sleep 1; npm run scaffold",
     
-    "clean": "rm -r debug",
+    "build:debug": "npm run clean:debug; npm run mkdir; npm run compile;",
+    "build:release": "npm run build:debug; sleep 1; npm run minify; sleep 1; npm run clean:release; npm run scaffold",
+    
+    "clean:debug": "rm -r debug",
+    "clean:release": "rm -r release",
+
     "mkdir": "mkdir -p debug & mkdir -p debug/js & mkdir -p debug/css",
-    "scaffold": "rm -r release; cp -r debug release",
+    "scaffold": "cp -r debug release",
     
     "serve": "http-server debug -p 9000 -s -o",
     "livereload": "tiny-lr-fork",
