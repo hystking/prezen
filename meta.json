@@ -1,7 +1,7 @@
 {
-  "title": "ページタイトル",
-  "description": "概要",
-  "keywords": "キーワード",
+  "title": "npm scripts template",
+  "description": "description",
+  "keywords": "keywords",
   "url": "URL",
   "ogImage": "OGIMAGE"
 }
